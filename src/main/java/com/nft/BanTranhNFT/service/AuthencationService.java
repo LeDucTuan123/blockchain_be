@@ -1,5 +1,6 @@
 package com.nft.BanTranhNFT.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.nft.BanTranhNFT.model.JwtAuthenticationResponse;
 import com.nft.BanTranhNFT.model.RefreshTokenRequest;
 import com.nft.BanTranhNFT.model.SignInRequest;
@@ -8,9 +9,9 @@ import com.nft.BanTranhNFT.model.User;
 public interface AuthencationService {
     
 
-    JwtAuthenticationResponse Signin(SignInRequest signInRequest);
+    public User signin(JsonNode data);
 
-    JwtAuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest);
+    // JwtAuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest);
 
     
 }
