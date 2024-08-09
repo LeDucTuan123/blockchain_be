@@ -38,7 +38,7 @@ public class PaintingServiceImpl implements PaintingService {
                 painting1.setTitle(painting.getTitle());
                 painting1.setPaintingDescription(painting.getPaintingDescription());
                 painting1.setPrice(painting.getPrice());
-                painting1.setArtist(painting.getArtist());
+                painting1.setUser(painting.getUser());
                 painting1.setImageUrl(painting.getImageUrl());
                 painting1.setCreatedAt(painting.getCreatedAt());
                 return paintingRepository.save(painting1);

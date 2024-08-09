@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("orderItem")
+@RequestMapping("orderitem")
 public class OrderItemController {
     @Autowired
     OrderItemService orderItemService;
@@ -24,10 +24,15 @@ public class OrderItemController {
         return orderItemService.updateOrderItem(id, orderItem);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deletee/{id}")
     public boolean deleteOrderItem(@PathVariable("id") int id){
         return orderItemService.deleteOrderItem(id);
     }
+
+    @DeleteMapping("/delete/{id}")
+	public OrderItem delete(@PathVariable("id") Integer id) {
+		return orderItemService.delete(id);
+	}
 
     @GetMapping("/list")
     public List<OrderItem> getListOrderItem(){

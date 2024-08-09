@@ -4,6 +4,9 @@ package com.nft.BanTranhNFT.service.impl;
 import com.nft.BanTranhNFT.model.OrderItem;
 import com.nft.BanTranhNFT.repository.OrderItemRepository;
 import com.nft.BanTranhNFT.service.OrderItemService;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,4 +62,13 @@ public class OrderItemServiceImpl implements OrderItemService {
     public Optional<OrderItem> getOneOrderItem(int id) {
         return orderItemRepository.findById(id);
     }
+
+	@Transactional
+	@Override
+	public OrderItem delete(Integer id) {
+		OrderItem dd = orderItemRepository.findById(id).get();
+		orderItemRepository.deleteOrderDetailById(id);
+		return dd;
+	}
+
 }

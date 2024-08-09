@@ -6,7 +6,7 @@ import com.nft.BanTranhNFT.model.User;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.security.core.userdetails.UserDetailsService;
+
 public interface UserService {
     //Ham them User
     public User addUser(JsonNode user);
@@ -23,7 +23,7 @@ public interface UserService {
     //Ham lay ra 1 User
     public Optional<User> getOneUser(int id);
 
-     UserDetailsService userDetailsService();
+
 
     //  public List<User> convertToUser();
 }

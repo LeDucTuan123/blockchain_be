@@ -20,4 +20,6 @@ public class BanTranhNftApplication {
 		SpringApplication.run(BanTranhNftApplication.class, args);
 	}
 
+	
+
 }

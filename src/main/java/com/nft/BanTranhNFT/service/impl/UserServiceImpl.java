@@ -7,9 +7,6 @@ import com.nft.BanTranhNFT.model.User;
 import com.nft.BanTranhNFT.repository.UserRepository;
 import com.nft.BanTranhNFT.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,25 +19,8 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
 
-    @Override
-    public UserDetailsService userDetailsService() {
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) {
-                return userRepository.findByEmail(username);
-            }
-        };
-    }
 
-    public UserDetailsService loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("Người dùng không tồn tại");
-        }
-        return (UserDetailsService) new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
-    }
 
-    
 
     @Override
     public User addUser(JsonNode user) {
@@ -61,7 +41,7 @@ public class UserServiceImpl implements UserService {
             // User user1 = userRepository.getById(id);
             User user1 = userRepository.findById(id).orElse(null);
             if(user1 != null){
-                user1.setUsername(user.getUsername());
+                user1.setFirstname(user.getFirstname());
                 user1.setPassword(user.getPassword());
                 user1.setEmail(user.getEmail());
                 user1.setPhone(user.getPhone());

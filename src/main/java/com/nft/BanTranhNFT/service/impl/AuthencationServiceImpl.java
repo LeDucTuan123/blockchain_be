@@ -11,13 +11,10 @@ import com.nft.BanTranhNFT.model.Role;
 import com.nft.BanTranhNFT.model.User;
 import com.nft.BanTranhNFT.repository.UserRepository;
 import com.nft.BanTranhNFT.service.AuthencationService;
-import com.nft.BanTranhNFT.service.JWTService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 
 
@@ -28,13 +25,6 @@ public class AuthencationServiceImpl implements AuthencationService{
     
      private final UserRepository userRepository;
 
-    private final PasswordEncoder passwordEncoder;
-
-    private final AuthenticationManager authenticationManager;
-
-    private final JWTService jwtService;
-
-  
     @Autowired
     UserRepository Repository;
 

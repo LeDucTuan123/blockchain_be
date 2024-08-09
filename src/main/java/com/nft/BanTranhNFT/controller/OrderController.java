@@ -1,5 +1,6 @@
 package com.nft.BanTranhNFT.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.nft.BanTranhNFT.model.Order;
 import com.nft.BanTranhNFT.model.Painting;
 import com.nft.BanTranhNFT.service.OrderService;
@@ -19,10 +20,20 @@ public class OrderController {
         return orderService.addOrder(order);
     }
 
-    @PutMapping("/update")
-    public Order updateOrder(@RequestParam("id") int id, @RequestBody Order order){
-        return orderService.updateOrder(id, order);
-    }
+    // @PutMapping("/update")
+    // public Order updateOrder(@RequestParam("id") int id, @RequestBody Order order){
+    //     return orderService.updateOrder(id, order);
+    // }
+
+    @GetMapping("/cart/{id}")
+	public List<Order> getOrderInCart(@PathVariable("id") Integer id) {
+		    return orderService.getOrderInCart(id);
+	}
+
+    	@PostMapping("/create")
+	public Order create(@RequestBody JsonNode order) {
+		return orderService.create(order);
+	}
 
     @DeleteMapping("/delete/{id}")
     public boolean deleteOrder(@PathVariable("id") int id){

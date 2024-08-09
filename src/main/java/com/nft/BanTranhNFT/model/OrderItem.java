@@ -5,35 +5,38 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.io.Serializable;
+import java.util.Optional;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "OrderItems")
-public class OrderItem {
+@Table(name = "Orderdetails")
+public class OrderItem implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_item_id")
-    private int orderItemId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	private Integer quantity;
+	private Double price;
+	@JsonBackReference(value = "orderdetail-order")
+	@ManyToOne
+	@JoinColumn(name = "orderid")
+	Order order;
+	@JsonBackReference(value = "orderdetail-painting")
+	@ManyToOne
+	@JoinColumn(name = "paintingid")
+	Painting painting;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    @JsonIgnoreProperties(value = "orderItems")
-    private Order order;
 
-    @ManyToOne
-    @JoinColumn(name = "painting_id")
-    @JsonIgnoreProperties(value = "orderItems")
-    private Painting painting;
 
-    @Column(name = "quantity", nullable = false)
-    private int quantity;
-
-    @Column(name = "price", nullable = false)
-    private float price;
+    public Integer getPaintingid() {
+        return painting != null ? painting.getPaintingId() : null;
+    }
 }

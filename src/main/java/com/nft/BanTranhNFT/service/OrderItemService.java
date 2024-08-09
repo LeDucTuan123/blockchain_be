@@ -12,6 +12,8 @@ public interface OrderItemService {
 
     public boolean deleteOrderItem(int id);
 
+    OrderItem delete(Integer id);
+
     public List<OrderItem> getAllOrderItem();
 
     public Optional<OrderItem> getOneOrderItem(int id);
