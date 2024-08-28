@@ -33,6 +33,9 @@ public class OrderItem implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "paintingid")
 	Painting painting;
+	// @JsonBackReference(value = "orderdetail-user")
+	// @ManyToOne
+	// User user;
 
 
 

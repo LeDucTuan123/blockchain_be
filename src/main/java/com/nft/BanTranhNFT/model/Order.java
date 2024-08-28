@@ -57,6 +57,7 @@ public class Order implements Serializable{
 	private Date orderdate;
 	private Double totalamount;	
 	private String codeorder;
+    private String receiver;
 	@JsonBackReference(value = "order-user")
 	@ManyToOne
 	@JoinColumn(name = "userid")

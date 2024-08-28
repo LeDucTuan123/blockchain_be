@@ -8,8 +8,11 @@ import com.nft.BanTranhNFT.repository.OrderItemRepository;
 import com.nft.BanTranhNFT.repository.OrderRepository;
 import com.nft.BanTranhNFT.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails.Address;
 import org.springframework.stereotype.Service;
+import com.fasterxml.jackson.core.type.TypeReference;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -154,6 +157,24 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+@Override
+	public Order payment(JsonNode data) {
+		List<OrderItem> orderdetails = new ArrayList<OrderItem>();
+		ObjectMapper mapper = new ObjectMapper();
+		Order order = mapper.convertValue(data, Order.class);
 
+	
+		order.setOrderdetails(orderdetails);
+	
+		Order o = orderRepository.save(order);
+		TypeReference<List<OrderItem>> type = new TypeReference<List<OrderItem>>() {
+		};
+		List<OrderItem> list = mapper.convertValue(data.get("orderdetails"), type);
+		for (OrderItem od : list) {
+			od.setOrder(o);
+			orderItemRepository.save(od);
+		}
+		return o;
+	}
 
 }

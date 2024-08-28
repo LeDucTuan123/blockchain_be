@@ -38,6 +38,13 @@ public class User  implements Serializable{
 	private Role role;
 	private String firstname;
 	private String lastname;
+	private String address;
+	private String wallet;
+	// @JsonManagedReference(value = "orderdetail-user")
+    // @OneToMany(mappedBy = "user")
+    // List<OrderItem> orderdetails;
 	
-	
+	// public List<OrderItem> getOrderItems() {
+    //     return orderItems;
+    // }
 }

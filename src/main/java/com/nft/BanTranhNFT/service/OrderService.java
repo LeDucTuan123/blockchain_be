@@ -16,6 +16,8 @@ public interface OrderService {
 
     Order create(JsonNode order);
 
+    Order payment(JsonNode data);
+
 //     @Override
 // public List<Order> getOrderInCart(Integer id) {
 //     return orderRepository.getOrdersInCartByUser(id);

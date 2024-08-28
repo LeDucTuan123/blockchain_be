@@ -25,6 +25,12 @@ public class OrderController {
     //     return orderService.updateOrder(id, order);
     // }
 
+    @PostMapping("/payment")
+	public Order payment(@RequestBody JsonNode data) {
+		return orderService.payment(data);
+	}
+	
+
     @GetMapping("/cart/{id}")
 	public List<Order> getOrderInCart(@PathVariable("id") Integer id) {
 		    return orderService.getOrderInCart(id);

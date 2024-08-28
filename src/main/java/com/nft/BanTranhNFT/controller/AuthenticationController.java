@@ -33,9 +33,15 @@ public class AuthenticationController {
     //     return ResponseEntity.ok(authenticationService.Signin(signInRequest));
     // }
 
-@PostMapping("login")
+    @PostMapping("login")
 	public User signin(@RequestBody JsonNode data) {
 		return service.signin(data);
+	}
+
+
+    @PatchMapping("/wallet/{id}")
+	public User updateWallet(@RequestBody JsonNode wallet, @PathVariable("id") Integer id) {
+		return service.updateWallet(wallet, id);
 	}
 
     // @PostMapping("/refresh")
