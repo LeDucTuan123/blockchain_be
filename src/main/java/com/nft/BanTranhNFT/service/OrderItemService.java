@@ -17,4 +17,6 @@ public interface OrderItemService {
     public List<OrderItem> getAllOrderItem();
 
     public Optional<OrderItem> getOneOrderItem(int id);
+
+    List<Object[]> getProductInSuccessOrder(Integer id);
 }

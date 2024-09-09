@@ -16,5 +16,8 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
 	@Query("delete from OrderItem od where od.id = ?1")
 	void deleteOrderDetailById(Integer id);
 
+	@Query("select d.painting, d.quantity, d.price from OrderItem d where d.order.id = ?1")
+	List<Object[]> getPaintingInSuccessOrder(Integer id);
+
 	
 }

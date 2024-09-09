@@ -71,4 +71,11 @@ public class OrderItemServiceImpl implements OrderItemService {
 		return dd;
 	}
 
+
+    @Override
+	public List<Object[]> getProductInSuccessOrder(Integer id) {
+		List<Object[]> list = orderItemRepository.getPaintingInSuccessOrder(id);
+		return list;
+	}
+
 }

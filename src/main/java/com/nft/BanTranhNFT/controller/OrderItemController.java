@@ -38,4 +38,9 @@ public class OrderItemController {
     public List<OrderItem> getListOrderItem(){
         return orderItemService.getAllOrderItem();
     }
+
+    @GetMapping("/success/{id}")
+	public List<Object[]> getProductInSuccessOrder(@PathVariable("id") Integer id) {
+		return orderItemService.getProductInSuccessOrder(id);
+	}
 }

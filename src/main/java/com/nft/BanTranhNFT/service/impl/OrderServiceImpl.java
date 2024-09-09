@@ -157,6 +157,11 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Override
+	public List<Order> getOrderSuccess(Integer id) {
+		return orderRepository.getOrderSuccess(id);
+	}
+
 @Override
 	public Order payment(JsonNode data) {
 		List<OrderItem> orderdetails = new ArrayList<OrderItem>();
