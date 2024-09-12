@@ -11,6 +11,8 @@ public interface AuthencationService {
 
     public User signin(JsonNode data);
 
+    public User signUp(User acc);
+
     public User updateWallet(JsonNode wallet, Integer id);
 
     // JwtAuthenticationResponse refreshToken(RefreshTokenRequest refreshTokenRequest);

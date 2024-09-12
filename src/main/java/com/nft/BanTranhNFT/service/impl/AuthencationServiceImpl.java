@@ -43,6 +43,13 @@ public class AuthencationServiceImpl implements AuthencationService{
 	}
 
 	@Override
+	public User signUp(User acc) {
+		System.out.println(acc.getEmail());
+		User account = Repository.save(acc);
+		return account;
+	}
+
+	@Override
 	public User updateWallet(JsonNode wallet, Integer id) {
 		User a = Repository.findById(id).get();
 		a.setWallet(wallet.get("wallet").asText());

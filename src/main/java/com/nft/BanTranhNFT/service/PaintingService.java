@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PaintingService {
+
     public Painting addPainting(JsonNode painting);
 
     public Painting updatePainting(int id, Painting painting);

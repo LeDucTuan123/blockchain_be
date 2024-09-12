@@ -23,16 +23,12 @@ public class AuthenticationController {
     private final AuthencationService authenticationService;
     @Autowired
 	AuthencationService service;
-    // @PostMapping("/signup")
-    // public ResponseEntity<User> signup(@RequestBody SignUpRequest signUpRequest) {
-    //     return ResponseEntity.ok(authenticationService.signup(signUpRequest));
-    // }
+	@PostMapping("signup")
+	public User signUp(@RequestBody User acc) {
+		return service.signUp(acc);
+	}
 
-    // @PostMapping("/signin")
-    // public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SignInRequest signInRequest) {
-    //     return ResponseEntity.ok(authenticationService.Signin(signInRequest));
-    // }
-
+ 
     @PostMapping("login")
 	public User signin(@RequestBody JsonNode data) {
 		return service.signin(data);
@@ -44,8 +40,4 @@ public class AuthenticationController {
 		return service.updateWallet(wallet, id);
 	}
 
-    // @PostMapping("/refresh")
-    // public ResponseEntity<JwtAuthenticationResponse> refresh(@RequestBody RefreshTokenRequest refreshTokenRequest) {
-    //     // return ResponseEntity.ok(authenticationService.refreshToken(refreshTokenRequest));
-    // }
 }
