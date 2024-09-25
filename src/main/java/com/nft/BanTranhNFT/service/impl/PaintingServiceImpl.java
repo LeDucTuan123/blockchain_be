@@ -2,6 +2,7 @@ package com.nft.BanTranhNFT.service.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nft.BanTranhNFT.model.Order;
 import com.nft.BanTranhNFT.model.Painting;
 import com.nft.BanTranhNFT.repository.PaintingRepository;
 import com.nft.BanTranhNFT.service.PaintingService;
@@ -40,6 +41,7 @@ public class PaintingServiceImpl implements PaintingService {
                 painting1.setPrice(painting.getPrice());
                 painting1.setUser(painting.getUser());
                 painting1.setImageUrl(painting.getImageUrl());
+                painting1.setStatus(painting.getStatus());
                 painting1.setCreatedAt(painting.getCreatedAt());
                 return paintingRepository.save(painting1);
             }
@@ -68,5 +70,10 @@ public class PaintingServiceImpl implements PaintingService {
     public Painting getOnePainting(Integer id) {
         return paintingRepository.findById(id).get();
     }
+
+    @Override
+	public List<Painting> getPaintingForUser(Integer id) {
+		return paintingRepository.getPaintingForUser(id);
+	}
 
 }

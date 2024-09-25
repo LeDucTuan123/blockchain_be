@@ -25,6 +25,12 @@ public class OrderController {
     //     return orderService.updateOrder(id, order);
     // }
 
+	@GetMapping("/ordersuccess")
+	public List<Order> getAllOrdersSuccess() {
+		List<Order> orders = orderService.getAllOrdersSuccess();
+	  return orderService.getAllOrdersSuccess();
+	}
+
     @GetMapping("ordersuccess/{id}")
 	public List<Order> getOrderSuccess(@PathVariable("id") Integer id) {
 		    return orderService.getOrderSuccess(id);

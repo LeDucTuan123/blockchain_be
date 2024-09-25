@@ -158,6 +158,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+	public List<Order> getAllOrdersSuccess() {
+		return orderRepository.findAll();
+	}
+
+    @Override
 	public List<Order> getOrderSuccess(Integer id) {
 		return orderRepository.getOrderSuccess(id);
 	}

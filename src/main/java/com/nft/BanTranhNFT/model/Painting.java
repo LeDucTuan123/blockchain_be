@@ -49,6 +49,9 @@ public class Painting implements Serializable{
     @Column(name = "image_url", length = 255)
     private String imageUrl;
 
+    @Column(name = "status")
+    private Boolean status;
+
     
 
     @Column(name = "created_at", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")

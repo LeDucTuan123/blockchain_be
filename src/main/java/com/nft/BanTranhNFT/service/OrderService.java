@@ -18,6 +18,8 @@ public interface OrderService {
 
     Order payment(JsonNode data);
 
+    List<Order> getAllOrdersSuccess();
+
     List<Order> getOrderSuccess(Integer id);
 
 //     @Override

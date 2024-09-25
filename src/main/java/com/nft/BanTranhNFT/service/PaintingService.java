@@ -1,6 +1,7 @@
 package com.nft.BanTranhNFT.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.nft.BanTranhNFT.model.Order;
 import com.nft.BanTranhNFT.model.Painting;
 
 import java.util.List;
@@ -17,6 +18,8 @@ public interface PaintingService {
     public List<Painting> getAllPainting();
 
     public Painting getOnePainting(Integer id);
+
+    public List<Painting> getPaintingForUser(Integer id);
 
 
 }

@@ -1,6 +1,7 @@
 package com.nft.BanTranhNFT.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.nft.BanTranhNFT.model.Order;
 import com.nft.BanTranhNFT.model.Painting;
 import com.nft.BanTranhNFT.repository.PaintingRepository;
 import com.nft.BanTranhNFT.service.PaintingService;
@@ -46,5 +47,10 @@ public class PaintingController {
     @GetMapping("/search")
 	public List<Painting> searchByName(@RequestParam String q) {
 		return PaintingRepository.findByTitleContaining(q);
+	}
+
+    @GetMapping("list/{id}")
+	public List<Painting> getOrderSuccess(@PathVariable("id") Integer id) {
+		return paintingService.getPaintingForUser(id);
 	}
 }
