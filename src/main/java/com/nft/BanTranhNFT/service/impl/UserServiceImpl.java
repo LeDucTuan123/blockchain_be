@@ -35,22 +35,46 @@ public class UserServiceImpl implements UserService {
 		return null;
     }
 
+    // @Override
+    // public User updateUser(int id, User user) {
+    //     if(user != null){
+    //         // User user1 = userRepository.getById(id);
+    //         User user1 = userRepository.findById(id).orElse(null);
+    //         if(user1 != null){
+    //             user1.setFirstname(user.getFirstname());
+    //             user1.setPassword(user.getPassword());
+    //             user1.setEmail(user.getEmail());
+    //             user1.setPhone(user.getPhone());
+    //             user1.setRole(user.getRole());
+    //             return userRepository.save(user1);
+    //         }
+    //         // if (user1.getEmail() != null) {
+    //         //     user1.setEmail(user.getEmail());
+    //         // }
+    //     }
+    //     return null;
+    // }
     @Override
-    public User updateUser(int id, User user) {
-        if(user != null){
-            // User user1 = userRepository.getById(id);
-            User user1 = userRepository.findById(id).orElse(null);
-            if(user1 != null){
-                user1.setFirstname(user.getFirstname());
-                user1.setPassword(user.getPassword());
+public User updateUser(int id, User user) {
+    if(user != null){
+        User user1 = userRepository.findById(id).orElse(null);
+        if(user1 != null){
+            // Chỉ cập nhật email nếu nó không phải là null
+            if (user.getEmail() != null && !user.getEmail().isEmpty()) {
                 user1.setEmail(user.getEmail());
-                user1.setPhone(user.getPhone());
-                user1.setRole(user.getRole());
-                return userRepository.save(user1);
             }
+
+            user1.setFirstname(user.getFirstname());
+            user1.setLastname(user.getLastname());
+            user1.setPassword(user.getPassword());
+            user1.setPhone(user.getPhone());
+            user1.setRole(user.getRole());
+            user1.setAddress(user.getAddress());
+            return userRepository.save(user1);
         }
-        return null;
     }
+    return null;
+}
 
     @Override
     public boolean deleteUser(int id) {
